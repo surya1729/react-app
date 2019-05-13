@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import Person from './Person/Person';// file extension doesn't need to have any name 
 
+
 class App extends Component {
    state = {
      persons: [
