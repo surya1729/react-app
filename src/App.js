@@ -48,6 +48,25 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer'
     };
+    let persons = null;
+    if(this.state.showPersons){  
+      //if block cannot be used in jsx file it can be used in java script language so we used here
+      persons= (
+        <div>           
+        <Person 
+           name = {this.state.persons[0].name} 
+           age = {this.state.persons[0].age}/>
+        <Person 
+           name = {this.state.persons[1].name}
+           age = {this.state.persons[1].age}
+           click={this.switchNameHandler.bind(this, 'surya!!')}
+          changed = {this.nameChangedHandler}>My Hobbies: Reading</Person>
+        <Person 
+           name = {this.state.persons[2].name} 
+           age = {this.state.persons[2].age}/>
+        </div>
+      );
+    }
   return (
     <div className="App">
       <h1>Hi,I'm a React App </h1>
@@ -55,17 +74,9 @@ class App extends Component {
       <button 
         style={style}      
         onClick={ this.togglePersonHandler}>Toggle Persons</button>
-   { 
-     this.state.showPersons == true ?      //if statement cannot be used in if block this doesn't work in it.
-      <div>           
-      <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age}/>
-      <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age}
-      click={this.switchNameHandler.bind(this, 'surya!!')}
-      changed = {this.nameChangedHandler}>My Hobbies: Reading</Person>
-      <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age}/>
-      </div> : null
-    } 
+     {persons} 
     </div>
+    
 
 
   );
