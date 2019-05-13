@@ -10,7 +10,8 @@ class App extends Component {
        {name: 'pratap', age: 8},
        {name: 'my', age: 25}
      ],
-     otherState: 'some other state;'
+     otherState: 'some other state',
+     showPersons: false
    };
 
    switchNameHandler = (newName) => {
@@ -33,6 +34,11 @@ class App extends Component {
         ]
       } )
     }
+
+    togglePersonHandler = () =>{
+      const doesShow = this.state.showPersons;
+      this.setState({ showPersons: !doesShow });
+    }
   render(){
 
     const style = {
@@ -48,13 +54,19 @@ class App extends Component {
       <p>this is really working!</p> 
       <button 
         style={style}      
-        onClick={() => this.switchNameHandler('chalumuri!!')}>Switch Name</button>
+        onClick={ this.togglePersonHandler}>Toggle Persons</button>
+   { 
+     this.state.showPersons == true ?      //if statement cannot be used in if block this doesn't work in it.
+      <div>           
       <Person name = {this.state.persons[0].name} age = {this.state.persons[0].age}/>
       <Person name = {this.state.persons[1].name} age = {this.state.persons[1].age}
       click={this.switchNameHandler.bind(this, 'surya!!')}
       changed = {this.nameChangedHandler}>My Hobbies: Reading</Person>
       <Person name = {this.state.persons[2].name} age = {this.state.persons[2].age}/>
+      </div> : null
+    } 
     </div>
+
 
   );
   //return React.createElement('div',{className: 'App'},React.createElement('h1',null, 'does this work now?'));
