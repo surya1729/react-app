@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';// file extension doesn't need to have any name 
 
 
@@ -56,7 +57,11 @@ class App extends Component {
       font : 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {   // hover is valid css pseudo selector radium is used
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
     let persons = null;
     if(this.state.showPersons){  
@@ -74,6 +79,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      style[':hover'] = {     //we cannot use . here as it is a string "[ ]" it is used here
+        backgroundColor: 'salmon',
+        color: 'black'
+      };
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     
@@ -107,7 +116,7 @@ class App extends Component {
    
   }
 }
-export default App;
+export default Radium(App);
 /*<button onClick={this.switchNameHandler.bind(this, 'chalumuri')}>Switch Name</button> 
 while clicking switch name button then surya is replaced with chalumuri
 and similarly 

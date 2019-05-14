@@ -1,4 +1,5 @@
 import React from 'react';
+import Radium from 'radium';
 import './Person.css';
 
 const person = (props) => {  //argument name be anything
@@ -13,7 +14,7 @@ const person = (props) => {  //argument name be anything
     )
 };
 
-export default person;
+export default Radium(person);
 
 
 /* class Person extends Component{
