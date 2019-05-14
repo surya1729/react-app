@@ -6,14 +6,13 @@ import Person from './Person/Person';// file extension doesn't need to have any 
 class App extends Component {
    state = {
      persons: [
-       {name: 'surya', age: 18},
-       {name: 'pratap', age: 8},
-       {name: 'my', age: 25}
+       {id:'asfa1',name: 'surya', age: 18},
+       {id:'hghg1',name: 'pratap', age: 8},
+       {id:'lkju11',name: 'my', age: 25}
      ],
      otherState: 'some other state',
      showPersons: false
    };
-
 
     nameChangedHandler = (event) => {
       this.setState(  {
@@ -30,6 +29,7 @@ class App extends Component {
         //const persons = this.state.persons.slice();
         /*here by using slice() it copies the data to other array */
         const persons = [...this.state.persons]; //modern method
+
         /*spread  operates spreads the array elements into list of elements to persons  array*/
         persons.splice(personIndex,1); // 1 is number of paragraphs need to be deleted by one click
         this.setState({persons: persons});
@@ -58,10 +58,12 @@ class App extends Component {
             return <Person 
             click = {()=> this.deletePersonHandler(index)}
             name={person.name}
-            age = {person.age}/>
+            age = {person.age}
+            key = {person.id} />
           })}
         </div>
       );
+      /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
   return (
     <div className="App">
