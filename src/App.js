@@ -76,10 +76,22 @@ class App extends Component {
       style.backgroundColor = 'red';
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
+    
+    const classes = [];
+    if(this.state.persons.length <= 2){
+      classes.push('red');  //classes =[red]
+      
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold'); //classes = [red, bold]
+    }
+    
+
+
   return (
     <div className="App">
       <h1>Hi,I'm a React App </h1>
-      <p>this is really working!</p> 
+      <p className = {classes.join(' ')}>This is really working!</p> 
       <button 
         style={style}      
         onClick={ this.togglePersonHandler}>Toggle Persons</button>
