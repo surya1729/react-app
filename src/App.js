@@ -51,7 +51,8 @@ class App extends Component {
   render(){
 
     const style = {
-      backgroundColor:'white',
+      backgroundColor:'green',
+      color: 'white',
       font : 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -72,6 +73,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
   return (
