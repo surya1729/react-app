@@ -14,17 +14,7 @@ class App extends Component {
      showPersons: false
    };
 
-   switchNameHandler = (newName) => {
-     //console.log('was clicked');
-     // DON'T DO THIS: this.state.persons[0].name = 'suryapratap'
-     this.setState(  {
-       persons: [
-          {name: newName, age: 18},
-          {name: 'pratap', age: 8},
-          {name: 'my', age: 20}
-       ]
-     } )
-    }
+
     nameChangedHandler = (event) => {
       this.setState(  {
         persons: [
@@ -34,6 +24,11 @@ class App extends Component {
         ]
       } )
     }
+     deletePersonHandler = (personIndex) => {
+        const persons = this.state.persons;
+        persons.splice(personIndex,1);
+        this.setState({persons: persons});
+     }
 
     togglePersonHandler = () =>{
       const doesShow = this.state.showPersons;
@@ -53,11 +48,13 @@ class App extends Component {
       //if block cannot be used in jsx file it can be used in java script language so we used here
       persons= (
         <div>
-          {this.state.persons.map(person => { // here person can be any thing 
-            return <Person name={person.name}
+          {this.state.persons.map((person, index) => { // here person can be any thing 
+            return <Person 
+            click = {()=> this.deletePersonHandler(index)}
+            name={person.name}
             age = {person.age}/>
           })}
-      </div>
+        </div>
       );
     }
   return (
