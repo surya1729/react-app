@@ -52,19 +52,12 @@ class App extends Component {
     if(this.state.showPersons){  
       //if block cannot be used in jsx file it can be used in java script language so we used here
       persons= (
-        <div>           
-        <Person 
-           name = {this.state.persons[0].name} 
-           age = {this.state.persons[0].age}/>
-        <Person 
-           name = {this.state.persons[1].name}
-           age = {this.state.persons[1].age}
-           click={this.switchNameHandler.bind(this, 'surya!!')}
-          changed = {this.nameChangedHandler}>My Hobbies: Reading</Person>
-        <Person 
-           name = {this.state.persons[2].name} 
-           age = {this.state.persons[2].age}/>
-        </div>
+        <div>
+          {this.state.persons.map(person => { // here person can be any thing 
+            return <Person name={person.name}
+            age = {person.age}/>
+          })}
+      </div>
       );
     }
   return (
