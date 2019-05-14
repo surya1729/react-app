@@ -25,9 +25,15 @@ class App extends Component {
       } )
     }
      deletePersonHandler = (personIndex) => {
-        const persons = this.state.persons;
-        persons.splice(personIndex,1);
+        //const persons = this.state.persons;
+        /* there may be a chance of manipulation of array by using this method*/
+        //const persons = this.state.persons.slice();
+        /*here by using slice() it copies the data to other array */
+        const persons = [...this.state.persons]; //modern method
+        /*spread  operates spreads the array elements into list of elements to persons  array*/
+        persons.splice(personIndex,1); // 1 is number of paragraphs need to be deleted by one click
         this.setState({persons: persons});
+        
      }
 
     togglePersonHandler = () =>{
