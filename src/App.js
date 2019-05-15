@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import './App.css';
-import Radium, {StyleRoot}from 'radium';
 import Person from './Person/Person';// file extension doesn't need to have any name 
 
 
@@ -57,11 +56,7 @@ class App extends Component {
       font : 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {   // hover is valid css pseudo selector radium is used
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      cursor: 'pointer'
     };
     let persons = null;
     if(this.state.showPersons){  
@@ -78,11 +73,6 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {     //we cannot use . here as it is a string "[ ]" it is used here
-        backgroundColor: 'salmon',
-        color: 'black'
-      };
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     
@@ -98,7 +88,6 @@ class App extends Component {
 
 
   return (
-    <StyleRoot>
     <div className="App">
       <h1>Hi,I'm a React App </h1>
       <p className = {classes.join(' ')}>This is really working!</p> 
@@ -107,18 +96,16 @@ class App extends Component {
         onClick={ this.togglePersonHandler}>Toggle Persons</button>
      {persons} 
     </div>
-    </StyleRoot>
-    
-
-
-  );
+   
+   
+   );
   //return React.createElement('div',{className: 'App'},React.createElement('h1',null, 'does this work now?'));
    // to generate button in host
         /*make sure that switchNameHandler() is not called as we just calling its reference so it is switchNameHandler*/
    
   }
 }
-export default Radium(App);
+export default App;
 /*<button onClick={this.switchNameHandler.bind(this, 'chalumuri')}>Switch Name</button> 
 while clicking switch name button then surya is replaced with chalumuri
 and similarly 
