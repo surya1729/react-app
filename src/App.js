@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import './App.css';
+import CSSclasses from './App.css';
 import Person from './Person/Person';// file extension doesn't need to have any name 
 
 
@@ -76,21 +76,21 @@ class App extends Component {
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2){
-      classes.push('red');  //classes =[red]
+      assignedClasses.push(CSSclasses.red);  //assignedClasses =[red]
       
     }
     if(this.state.persons.length <= 1){
-      classes.push('bold'); //classes = [red, bold]
+      assignedClasses.push(CSSclasses.bold); //assignedClasses = [red, bold]
     }
     
 
 
   return (
-    <div className="App">
+    <div className={CSSclasses.App}>
       <h1>Hi,I'm a React App </h1>
-      <p className = {classes.join(' ')}>This is really working!</p> 
+      <p className = {assignedClasses.join(' ')}>This is really working!</p> 
       <button 
         style={style}      
         onClick={ this.togglePersonHandler}>Toggle Persons</button>
