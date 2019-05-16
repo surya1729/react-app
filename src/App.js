@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import CSSclasses from './App.css';
+import CSSclasses from './App.css';  //inline functions are removed and import from
+// from app.css where it conatins all style functons
 import Person from './Person/Person';// file extension doesn't need to have any name 
 
 
@@ -49,16 +50,8 @@ class App extends Component {
       this.setState({ showPersons: !doesShow });
     }
   render(){
-
-    const style = {
-      backgroundColor:'green',
-      color: 'white',
-      font : 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    };
     let persons = null;
+    let btnClass = ''
     if(this.state.showPersons){  
       //if block cannot be used in jsx file it can be used in java script language so we used here
       persons= (
@@ -73,7 +66,7 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
+      btnClass = CSSclasses.Red;
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     
@@ -92,8 +85,8 @@ class App extends Component {
     <div className={CSSclasses.App}>
       <h1>Hi,I'm a React App </h1>
       <p className = {assignedClasses.join(' ')}>This is really working!</p> 
-      <button 
-        style={style}      
+      <button      
+        className = {btnClass}
         onClick={ this.togglePersonHandler}>Toggle Persons</button>
      {persons} 
     </div>
