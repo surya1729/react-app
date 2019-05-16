@@ -73,6 +73,7 @@ class App extends Component {
           })}
         </div>
       );
+      style.backgroundColor = 'red';
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     

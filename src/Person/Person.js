@@ -12,7 +12,6 @@ const person = (props) => {  //argument name be anything
       </div>
     )
 };
-
 export default person;
 
 
