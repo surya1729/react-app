@@ -2,9 +2,14 @@ import React from 'react';
 import CSSclasses from'./Person.css';
 
 const person = (props) => {  //argument name be anything
+    const rnd = Math.random();
+    if(rnd>0.7){
+        throw new Error('Something went wrong');
+        
+    }
 
     return(  
-    
+     
      <div className = {CSSclasses.Person} >    
     <p onClick={props.click}> I'm {props.name} and I am {props.age} years old!</p>
     <p>{props.children}</p>
