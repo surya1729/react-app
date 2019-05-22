@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import CSSclasses from './App.css';  //inline functions are removed and import from
 // from app.css where it conatins all style functons
-import Person from './Person/Person';// file extension doesn't need to have any name 
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../components/Persons/Person/Person';// file extension doesn't need to have any name 
 
 class App extends Component {
    state = {
@@ -57,15 +56,13 @@ class App extends Component {
       persons= (
         <div>
           {this.state.persons.map((person, index) => { // here person can be any thing 
-            return <ErrorBoundary key = {person.id}>
-              
-              <Person 
+            return <Person 
               click = {()=> this.deletePersonHandler(index)}
               name={person.name}
               age = {person.age}
-               
+              key = {person.id}
               changed={(event) => this.nameChangedHandler(event,person.id)}/>
-            </ErrorBoundary>
+          
           })}
         </div>
       );
