@@ -4,6 +4,11 @@ import CSSclasses from './App.css';  //inline functions are removed and import f
 import Persons from '../components/Persons/Persons';// file extension doesn't need to have any name 
 import Cockpit from '../components/Cockpit/Cockpit';
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App.js] constructor');
+    
+  }
    state = {
      persons: [
        {id:'asfa1',name: 'surya', age: 18},
@@ -12,7 +17,17 @@ class App extends Component {
      ],
      otherState: 'some other state',
      showPersons: false
-   };
+   }
+   static getDerivedStateFromProps(props, state){
+     console.log('[App.js] getDerivedStateFromProps', props);
+     return state;
+   }
+   componentWillMount(){
+     console.log('[App.js] componentWillMount');
+   }
+   componentDidMount(){
+     console.log('[App.js] componentDidMount');
+   }
 
     nameChangedHandler = (event,id) => {
       const personIndex = this.state.persons.findIndex(p => {
@@ -49,16 +64,17 @@ class App extends Component {
       this.setState({ showPersons: !doesShow });
     }
   render(){
+    console.log('[App.js] render');
     let persons = null;
     
     if(this.state.showPersons){  
       //if block cannot be used in jsx file it can be used in java script language so we used here
-      persons= 
+      persons= (
           <Persons
            persons = {this.state.persons}
            clicked = {this.deletePersonHandler}
            changed = {this.nameChangedHandler} />
-        ;
+      );
       
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }

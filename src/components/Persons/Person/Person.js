@@ -2,7 +2,7 @@ import React from 'react';
 import CSSclasses from'./Person.css';
 
 const person = (props) => {  //argument name be anything
-    
+console.log('[Person.js] rendering...');   
 
     return(  
      
