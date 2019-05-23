@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import CSSclasses from './App.css';  //inline functions are removed and import from
 // from app.css where it conatins all style functons
-import Person from '../components/Persons/Person/Person';// file extension doesn't need to have any name 
-
+import Persons from '../components/Persons/Persons';// file extension doesn't need to have any name 
+import Cockpit from '../components/Cockpit/Cockpit';
 class App extends Component {
    state = {
      persons: [
@@ -50,45 +50,30 @@ class App extends Component {
     }
   render(){
     let persons = null;
-    let btnClass = ''
+    
     if(this.state.showPersons){  
       //if block cannot be used in jsx file it can be used in java script language so we used here
-      persons= (
-        <div>
-          {this.state.persons.map((person, index) => { // here person can be any thing 
-            return <Person 
-              click = {()=> this.deletePersonHandler(index)}
-              name={person.name}
-              age = {person.age}
-              key = {person.id}
-              changed={(event) => this.nameChangedHandler(event,person.id)}/>
-          
-          })}
-        </div>
-      );
-      btnClass = CSSclasses.Red;
+      persons= 
+          <Persons
+           persons = {this.state.persons}
+           clicked = {this.deletePersonHandler}
+           changed = {this.nameChangedHandler} />
+        ;
+      
       /*if list changes index also changes but it doesn't effect react for that now we r using id's */
     }
     
-    const assignedClasses = [];
-    if(this.state.persons.length <= 2){
-      assignedClasses.push(CSSclasses.red);  //assignedClasses =[red]
-      
-    }
-    if(this.state.persons.length <= 1){
-      assignedClasses.push(CSSclasses.bold); //assignedClasses = [red, bold]
-    }
+ 
     
 
 
   return (
     <div className={CSSclasses.App}>
-      <h1>Hi,I'm a React App </h1>
-      <p className = {assignedClasses.join(' ')}>This is really working!</p> 
-      <button      
-        className = {btnClass}
-        onClick={ this.togglePersonHandler}>Toggle Persons</button>
-     {persons} 
+      <Cockpit
+      showPersons = {this.state.showPersons}
+      persons = {this.state.persons}
+      clicked = {this.togglePersonHandler}/>
+      {persons} 
     </div>
    
    
