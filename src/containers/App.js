@@ -28,6 +28,15 @@ class App extends Component {
    componentDidMount(){
      console.log('[App.js] componentDidMount');
    }
+   shouldComponentUpdate(nextProps, nextState){
+      console.log('[App.js] shouldComponentUpdate');
+      return true;
+   }/*shouldComponentUpdate is used for performance */
+   componentDidUpdate(){
+     console.log('[App.js] componentDidUpdate');
+
+   }
+
 
     nameChangedHandler = (event,id) => {
       const personIndex = this.state.persons.findIndex(p => {
@@ -113,3 +122,9 @@ by clicking this link in output file it surya/chalumuri changes to surya!!*/
 /*switchNameHandler() by using this we can pass arguments but it
 is somewhat inefficent ...
 it is better to "bind" then the above */
+
+
+/*functional components are only for presentation
+class components  lifecycles can be found in it
+react app can also be built using only functional components 
+we can manage it*/
